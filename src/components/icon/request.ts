@@ -11,7 +11,7 @@ export const getSvgContent = (url: string) => {
 
   if (!req) {
     // we don't already have a request
-    req = fetch(url).then(rsp => {
+    req = fetch(url, {credentials: 'include'}).then(rsp => {
       if (rsp.ok) {
         return rsp.text().then(svgContent => {
           ioniconContent.set(url, validateContent(svgContent));
